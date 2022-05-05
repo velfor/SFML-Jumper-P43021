@@ -1,7 +1,7 @@
 #include "game.h"
 
 Game::Game() : 
-	window(sf::VideoMode(800, 600), "Test")
+	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Jumper")
 {
 	window.setVerticalSyncEnabled(true);
 }
