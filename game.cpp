@@ -33,5 +33,15 @@ void Game::draw() {
 	p1.draw(window);
 	window.display();
 }
-void Game::check_collisions() {}
+void Game::check_collisions() {
+	if (player.getHitBox().intersects(p1.getHitBox())) {
+		player.setIsJumping(false);
+		player.restSpeed();
+		sf::Vector2f platform_pos = p1.getPosition();
+		sf::Vector2f player_new_pos = 
+			sf::Vector2f(player.getPosition().x,
+				platform_pos.y - player.getHitBox().height);
+		player.setPosition(player_new_pos);
+	}
+}
 

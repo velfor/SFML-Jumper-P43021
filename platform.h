@@ -24,4 +24,6 @@ public:
 	void draw(sf::RenderWindow& window) {
 		window.draw(sprite);
 	}
+	sf::FloatRect getHitBox() { return sprite.getGlobalBounds(); }
+	sf::Vector2f getPosition() { return sprite.getPosition(); }
 };

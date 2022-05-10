@@ -8,3 +8,7 @@ const std::string PLAYER_IMAGES_FOLDER = "Players/";
 const std::string PLAYER_IMAGE_FILENAME = "bunny1_ready.png";
 const float PLAYER_ACC_X = 0.6f;
 const float FRICTION = -0.1f;
+const std::string PLATFORM_IMAGES_FOLDER = "Platforms/";
+const std::string PLATFORM_IMAGE_FILENAME = "ground_grass.png";
+const float GRAVITY = 0.6f;
+const float JUMP_SPEED = -20.f;
