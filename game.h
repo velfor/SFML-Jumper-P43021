@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <list>
 #include "player.h"
 #include "platform.h"
 
@@ -13,7 +14,8 @@ private:
 	sf::RenderWindow window;
 	GameState game_state = GameState::PLAY;
 	Player player;
-	Platform p1;
+	//Platform p1;
+	std::list<Platform*> platform_sprites;
 
 	void check_events();
 	void update();

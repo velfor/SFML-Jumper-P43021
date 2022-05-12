@@ -17,15 +17,17 @@ public:
 			PLAYER_IMAGES_FOLDER + 
 			PLAYER_IMAGE_FILENAME);
 		sprite.setTexture(texture);
+		sprite.setScale(0.5f, 0.5f);
 	}
 	void update() {
-		if (isJumping)  acc = sf::Vector2f(0.f, GRAVITY);
-		else if (!isJumping) acc = sf::Vector2f(0.f, 0.f);
+		//if (isJumping)  acc = sf::Vector2f(0.f, GRAVITY);
+		//else if (!isJumping) acc = sf::Vector2f(0.f, 0.f);
+		acc = sf::Vector2f(0.f, GRAVITY);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) acc.x = -PLAYER_ACC_X;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) acc.x = PLAYER_ACC_X;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)
+			&& !isJumping) {
 			jump();
-			isJumping = true;
 		}
 		acc.x += speed.x * FRICTION;
 		speed += acc;
@@ -42,10 +44,14 @@ public:
 	void draw(sf::RenderWindow& window) {
 		window.draw(sprite);
 	}
-	void jump() { if (!isJumping) speed.y = JUMP_SPEED; }
+	void jump() { 
+		isJumping = true;
+		speed.y = JUMP_SPEED; 
+	}
 	bool getIsJumping() { return isJumping; }
 	void setIsJumping(bool param) {	isJumping = param; }
-	void restSpeed() { speed.y = 0.f; }
+	void resetSpeed() { speed.y = 0.f; }
 	void setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
 	sf::Vector2f getPosition() { return sprite.getPosition(); }
+	sf::Vector2f getSpeed() { return speed; }
 };
