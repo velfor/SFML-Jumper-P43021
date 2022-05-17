@@ -10,7 +10,6 @@ private:
 	sf::Vector2f speed = sf::Vector2f(0.f, 0.f);
 	sf::Vector2f pos = sf::Vector2f(200.f, WINDOW_HEIGHT - 250.f);
 	bool isJumping = false;
-	bool isFalling = true;
 public:
 	Player() {
 		texture.loadFromFile(
@@ -21,11 +20,11 @@ public:
 		sprite.setScale(0.5f, 0.5f);
 	}
 	void update() {
-		if (isJumping || isFalling)  acc = sf::Vector2f(0.f, GRAVITY);
-		else acc = sf::Vector2f(0.f, 0.f);
-		//acc = sf::Vector2f(0.f, GRAVITY);
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) acc.x = -PLAYER_ACC_X;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) acc.x = PLAYER_ACC_X;
+		acc = sf::Vector2f(0.f, GRAVITY);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
+			acc.x = -PLAYER_ACC_X;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
+			acc.x = PLAYER_ACC_X;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)
 			&& !isJumping) {
 			jump();
@@ -51,13 +50,11 @@ public:
 	}
 	bool getIsJumping() { return isJumping; }
 	void setIsJumping(bool param) {	isJumping = param; }
-	bool getIsFalling() { return isFalling; }
-	void setIsFalling(bool param) { isFalling = param; }
 	void resetSpeed() { speed.y = 0.f; }
-	void setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
+	void setPosition(sf::Vector2f pos) { this->pos = pos; }
 	sf::Vector2f getPosition() { return sprite.getPosition(); }
 	sf::Vector2f getSpeed() { return speed; }
 	void setPosition(float x, float y) { 
-		sprite.setPosition(sf::Vector2f(x, y)); 
+		setPosition(sf::Vector2f(x, y)); 
 	}
 };

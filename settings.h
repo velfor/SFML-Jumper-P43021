@@ -12,3 +12,5 @@ const std::string PLATFORM_IMAGES_FOLDER = "Platforms/";
 const std::string PLATFORM_IMAGE_FILENAME = "ground_grass.png";
 const float GRAVITY = 0.6f;
 const float JUMP_SPEED = -20.f;
+const size_t PLATFORMS_QTY = 8;
+const sf::Color BACKGROUND_COLOR = sf::Color(135, 206, 250);

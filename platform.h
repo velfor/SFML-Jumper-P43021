@@ -9,6 +9,7 @@ private:
 	sf::Vector2f pos;
 	float width;
 	float height;
+	bool del = false;
 public:
 	Platform(float x, float y, float width, float height) {
 		texture.loadFromFile(
@@ -30,4 +31,6 @@ public:
 	void setPosition(float x, float y) {
 		sprite.setPosition(sf::Vector2f(x, y));
 	}
+	bool getDel() { return del; }
+	void setDel() { del = true; }
 };
